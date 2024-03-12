@@ -3,6 +3,7 @@ package fr.eni.filmotheque.bll;
 import fr.eni.filmotheque.bo.Film;
 import fr.eni.filmotheque.bo.Genre;
 import fr.eni.filmotheque.bo.Participant;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

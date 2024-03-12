@@ -3,6 +3,7 @@ package fr.eni.filmotheque.bo;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data /* @Getter @Setter @ToString @Equals */
 public class Film {
@@ -12,13 +13,11 @@ public class Film {
     private Integer Duree;
     private String Synopsis;
 
-    private Participant participant;
-    private Avis avis;
     @Setter
     private Genre genre;
-
-    ArrayList<Participant> listeParticipant = new ArrayList<>();
-    ArrayList<Avis> listeAvis = new ArrayList<>();
+    private Participant realisateur;
+    private List<Avis> listeAvis = new ArrayList<>();
+    private List<Participant> listeParticipant = new ArrayList<>();
 
     public Film(Long id, String titre, Integer annee, Integer duree, String synopsis) {
         this.Id = id;
@@ -36,14 +35,14 @@ public class Film {
     }
 
     public void setRealisateur(Participant realisateur) {
-        this.participant = realisateur;
+        this.realisateur = realisateur;
     }
 
-    public ArrayList<Participant> getActeurs() {
+    public List<Participant> getActeurs() {
         return listeParticipant;
     }
 
-    public ArrayList<Avis> getAvis() {
+    public List<Avis> getAvis() {
         return listeAvis;
     }
 }
