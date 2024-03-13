@@ -7,18 +7,20 @@
     <script src="/script.js"></script>
 </head>
 <body>
-    <nav>
-        <h1>Filmothèque</h1>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="button-menu svg-primary" onclick="openMenu()">
-            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
-        </svg>
-    </nav>
-    <div id="menu" class="menu hidden">
-        <a href="/">Accueil</a>
-        <a href="/films">Films</a>
-    </div>
+    <header>
+        <nav>
+            <h1>Filmothèque</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="button-menu svg-primary" onclick="openMenu()">
+                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+            </svg>
+        </nav>
+        <div id="menu" class="menu hidden">
+            <a href="/">Accueil</a>
+            <a href="/films">Films</a>
+        </div>
+    </header>
 
-    <p th:if="${films.isEmpty()}">Aucun film</p>
+    <h2 th:if="${films.isEmpty()}">Aucun film</h2>
 
     <section th:if="${!films.isEmpty()}">
         <h2>Films</h2>
@@ -38,8 +40,8 @@
                 <td th:text="${film.genre.Titre}"></td>
                 <td th:text="${film.Annee}"></td>
                 <td th:text="${film.Titre}"></td>
-                <td th:text="|${film.realisateur.Prenom} ${film.realisateur.Nom}|"></td>
-                <td><a th:href="|films/${film.Id}|">Détails</a></td>
+                <td th:text="${film.realisateur}"></td>
+                <td><a class="link-button" th:href="|films/${film.Id}|">Détails</a></td>
             </tr>
             </tbody>
         </table>

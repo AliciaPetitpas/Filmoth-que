@@ -12,6 +12,15 @@ body {
     margin: 0 auto;
     align-items: center;
     color: var(--primary-color);
+    background-color: pink;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
 }
 
 nav {
@@ -19,7 +28,6 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     padding: 1rem;
 }
 
@@ -30,9 +38,12 @@ nav {
 }
 
 .menu {
-    width: 100%;
+    padding: 1rem;
     flex-direction: column;
     align-items: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: -1.5rem;
 }
 
 a {
@@ -43,6 +54,13 @@ a {
 
 a:hover {
     color: var(--secondary-color);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
 }
 
 table {
@@ -59,14 +77,20 @@ table th, table td {
     padding: 8px;
 }
 
-table tr:nth-child(even) {
+tbody tr {
+    background-color: var(--fourth-color);
+}
+
+tbody tr:nth-child(even) {
     background-color: var(--tertiary-color);
 }
 
-table tr:hover {
+tbody tr:hover {
     cursor: pointer;
     background-color: var(--fourth-color);
 }
+
+/*TODO .link-button*/
 
 form {
     width: 75%;
@@ -88,6 +112,7 @@ input {
 ul {
     padding: 0;
     margin: 0;
+    width: 248px;
 }
 
 li {

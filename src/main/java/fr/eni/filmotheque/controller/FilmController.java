@@ -30,16 +30,20 @@ public class FilmController {
     }
 
     @GetMapping("/films/{id}")
-    public String getFilms(@PathVariable("id") long id, Model model) {
-        listeFilms = filmService.consulterFilms();
-        for (Film film: listeFilms) {
-            if (film.getId() == id) {
-                model.addAttribute("film", film);
-            }
-        }
-
+    public String getFilmDetail(@PathVariable("id") long id, Model model) {
+        model.addAttribute("film", filmService.consulterFilmParId(id));
         model.addAttribute("isUpdate", isUpdate);
 
         return "filmDetails";
     }
+
+//    @GetMapping("/films/{id}")
+//    public String getFilmUpdate(@PathVariable("id") long id, Model model) {
+//        isUpdate = true;
+//
+//        model.addAttribute("film", filmService.consulterFilmParId(id));
+//        model.addAttribute("isUpdate", isUpdate);
+//
+//        return "filmDetails";
+//    }
 }

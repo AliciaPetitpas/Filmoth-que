@@ -10,6 +10,8 @@ public class Participant extends Personne {
         super(Nom, Prenom);
     }
 
-    public void add(Participant participant) {
+    @Override
+    public String toString() {
+        return this.getPrenom() + " " + this.getNom();
     }
 }
