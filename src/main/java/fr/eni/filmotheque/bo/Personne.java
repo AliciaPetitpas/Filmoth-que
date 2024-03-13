@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public abstract class Personne {
     private Long Id;
-    private String Nom;
-    private String Prenom;
+    public String Nom;
+    public String Prenom;
 
     public Personne(String nom, String prenom) {
         this.Nom = nom;

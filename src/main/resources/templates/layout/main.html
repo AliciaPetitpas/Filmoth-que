@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre par défaut</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+<body>
+    <header th:replace="~{fragments/header}"/>
+
+    <main class="flex-center" layout:fragment="content"/>
+
+    <footer th:replace="~{fragments/footer}"/>
+</body>
+</html>

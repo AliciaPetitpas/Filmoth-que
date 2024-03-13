@@ -19,7 +19,7 @@ public class FilmController {
     private IFilmService filmService;
 
     private List<Film> listeFilms = new ArrayList<>();
-    private Boolean isUpdate = false;
+    private Boolean isReadOnly = true;
 
     @GetMapping("/films")
     public String getFilms(Model model) {
@@ -32,18 +32,18 @@ public class FilmController {
     @GetMapping("/films/{id}")
     public String getFilmDetail(@PathVariable("id") long id, Model model) {
         model.addAttribute("film", filmService.consulterFilmParId(id));
-        model.addAttribute("isUpdate", isUpdate);
+        model.addAttribute("isReadOnly", isReadOnly);
 
         return "filmDetails";
     }
 
-//    @GetMapping("/films/{id}")
-//    public String getFilmUpdate(@PathVariable("id") long id, Model model) {
-//        isUpdate = true;
-//
-//        model.addAttribute("film", filmService.consulterFilmParId(id));
-//        model.addAttribute("isUpdate", isUpdate);
-//
-//        return "filmDetails";
-//    }
+    @GetMapping("/filmsUpdate/{id}")
+    public String getFilmUpdate(@PathVariable("id") long id, Model model) {
+//        isReadOnly = false;
+
+        model.addAttribute("film", filmService.consulterFilmParId(id));
+        model.addAttribute("isReadOnly", isReadOnly);
+
+        return "filmUpdate";
+    }
 }

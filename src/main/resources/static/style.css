@@ -5,14 +5,24 @@
     --fourth-color: #B0D2DA;
 }
 
+html {
+    font-family: Candara, serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    width: 75%;
     margin: 0 auto;
     align-items: center;
     color: var(--primary-color);
     background-color: pink;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 header {
@@ -20,7 +30,11 @@ header {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    position: relative;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    left: 0;
+    top: 0;
 }
 
 nav {
@@ -28,32 +42,45 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.logo {
+    width: 2rem;
 }
 
 .button-menu {
     width: 1rem;
     cursor: pointer;
-
 }
 
 .menu {
-    padding: 1rem;
     flex-direction: column;
     align-items: flex-end;
     position: absolute;
-    right: 0;
-    bottom: -1.5rem;
+    right: 1.5rem;
+    bottom: 0.75rem;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
 }
 
 a {
     text-decoration: none;
     text-underline: none;
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
 }
 
 section {
@@ -61,10 +88,15 @@ section {
     flex-direction: column;
     width: 100%;
     text-align: center;
+    align-items: center;
 }
 
 table {
-    border-collapse: collapse;
+    width: 75%;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 table thead {
@@ -73,21 +105,20 @@ table thead {
 }
 
 table th, table td {
-    border: 1px solid var(--primary-color);
+    border: none;
     padding: 8px;
 }
 
 tbody tr {
-    background-color: var(--fourth-color);
+    background-color: white;
 }
 
 tbody tr:nth-child(even) {
-    background-color: var(--tertiary-color);
+    background-color: #f2f2f2;
 }
 
 tbody tr:hover {
-    cursor: pointer;
-    background-color: var(--fourth-color);
+    background-color: #ddd;
 }
 
 /*TODO .link-button*/
@@ -127,12 +158,17 @@ textarea {
     resize: none;
 }
 
+.retour {
+    display: flex;
+    margin: 1rem auto;
+}
+
 .svg-primary {
-    fill: var(--primary-color);
+    fill: var(--secondary-color);
 }
 
 .svg-primary:hover {
-    fill: var(--secondary-color);
+    fill: var(--tertiary-color);
 }
 
 .hidden {

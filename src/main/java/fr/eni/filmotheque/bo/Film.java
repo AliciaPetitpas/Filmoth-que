@@ -7,17 +7,17 @@ import java.util.List;
 
 @Data /* @Getter @Setter @ToString @Equals */
 public class Film {
-    private Long Id;
-    private String Titre;
-    private Integer Annee;
-    private Integer Duree;
-    private String Synopsis;
+    public Long Id;
+    public String Titre;
+    public Integer Annee;
+    public Integer Duree;
+    public String Synopsis;
 
     @Setter
-    private Genre genre;
-    private Participant realisateur;
-    private List<Avis> listeAvis = new ArrayList<>();
-    private List<Participant> listeParticipant = new ArrayList<>();
+    public Genre genre;
+    public Participant realisateur;
+    public List<Avis> listeAvis = new ArrayList<>();
+    public List<Participant> listeParticipant = new ArrayList<>();
 
     public Film(Long id, String titre, Integer annee, Integer duree, String synopsis) {
         this.Id = id;

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Genre {
     private Long Id;
-    private String Titre;
+    public String Titre;
 
     public Genre(String titre) {
         this.Titre = titre;
