@@ -20,6 +20,7 @@ public class FilmServiceBouchon implements IFilmService {
 	private static List<Genre> lstGenres = new ArrayList<>();
 	private static List<Participant> lstParticipants = new ArrayList<>();
 	private static List<Membre> lstMembres = new ArrayList<>();
+	private static List<Avis> lstAvis = new ArrayList<>();
 	private static int indexFilms = 1;
 
 	// Représente la table en base de données des genres des films
@@ -71,6 +72,11 @@ public class FilmServiceBouchon implements IFilmService {
 	@Override
 	public Participant consulterParticipantParId(long id) {
 		return lstParticipants.stream().filter(item -> item.getId() == id).findAny().orElse(null);
+	}
+
+	@Override
+	public List<Avis> consulterAvis(long idFilm) {
+		return lstAvis;
 	}
 
 	@Override
@@ -149,6 +155,7 @@ public class FilmServiceBouchon implements IFilmService {
 		lstMembres.add(membre1);
 		lstMembres.add(membre2);
 		Avis avis = new Avis(1L, 4, "On rit du début à la fin", membre1);
+		lstAvis.add(avis);
 		bienvenueChezLesChtis.getAvis().add(avis);
 	}
 }

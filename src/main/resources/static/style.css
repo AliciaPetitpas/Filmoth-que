@@ -195,3 +195,13 @@ textarea {
     fill: green;
     cursor: default;
 }
+
+.svg-star {
+    fill: #e2a92b;
+}
+
+.stars-note {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}

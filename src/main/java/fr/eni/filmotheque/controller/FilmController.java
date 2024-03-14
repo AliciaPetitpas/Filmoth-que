@@ -64,12 +64,4 @@ public class FilmController {
 
         return "redirect:/films";
     }
-
-    @GetMapping("/filmsUpdate/{id}")
-    public String getFilmUpdate(@PathVariable("id") long id, Model model) {
-        model.addAttribute("film", filmService.consulterFilmParId(id));
-        model.addAttribute("isReadOnly", isReadOnly);
-
-        return "filmUpdate";
-    }
 }
