@@ -6,8 +6,7 @@ public class Participant extends Personne {
         super(Id, Nom, Prenom);
     }
 
-    public Participant(String Nom, String Prenom) {
-        super(Nom, Prenom);
+    public Participant() {
     }
 
     @Override

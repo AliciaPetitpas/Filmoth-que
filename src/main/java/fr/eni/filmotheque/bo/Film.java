@@ -1,13 +1,16 @@
 package fr.eni.filmotheque.bo;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data /* @Getter @Setter @ToString @Equals */
+@NoArgsConstructor
 public class Film {
     public Long Id;
+    @NotBlank(message = "Veuillez renseigner un titre au film")
     public String Titre;
     public Integer Annee;
     public Integer Duree;

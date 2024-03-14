@@ -7,7 +7,7 @@
         <h2 th:if="${films.isEmpty()}">Aucun film</h2>
 
         <section th:if="${!films.isEmpty()}">
-            <h2>Films</h2>
+            <h2>Liste des films</h2>
 
             <table>
                 <thead>
@@ -37,6 +37,8 @@
                 </tbody>
             </table>
         </section>
+
+        <a href="/filmCreation">Ajouter un film</a>
     </main>
 </body>
 </html>

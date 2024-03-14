@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/main}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Membres</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <h1>Membres</h1>
+    <form action="/membres" method="post" th:object="${membre}">
+        <div class="label-input">
+            <label>Nom :</label>
+            <input type="text" th:field="*{Nom}" />
+        </div>
+        <span class="error" th:errors="*{Nom}"></span>
+        <div class="label-input">
+            <label>Prénom :</label>
+            <input type="text" th:field="*{Prenom}" />
+        </div>
+        <span class="error" th:errors="*{Prenom}"></span>
+        <div class="label-input">
+            <label>Pseudo :</label>
+            <input type="text" th:field="*{Pseudo}" />
+        </div>
+        <span class="error" th:errors="*{Pseudo}"></span>
+        <div class="label-input">
+            <label>Admin :</label>
+            <input type="checkbox" th:field="*{admin}" />
+        </div>
+        <button type="submit">
+            Valider
+        </button>
+    </form>
+
+    <p th:if="${membres.isEmpty()}">Aucun membre enregistré</p>
+    <section th:if="${!membres.isEmpty()}">
+        <h2>Liste des membres</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Pseudo</th>
+                <th>Administrateur</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="membre : ${membres}">
+                <td th:text="${membre.Nom}"></td>
+                <td th:text="${membre.Prenom}"></td>
+                <td th:text="${membre.pseudo}"></td>
+                <td>
+                    <span th:if="${membre.admin == true}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="button-menu svg-green">
+                            <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                        </svg>
+                    </span>
+                    <span th:if="${membre.admin == false}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="button-menu svg-red">
+                          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+                        </svg>
+                    </span>
+                </td>
+                <td>
+                    <a class="link-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="button-menu svg-primary">
+                            <path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/>
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+</body>
+</html>

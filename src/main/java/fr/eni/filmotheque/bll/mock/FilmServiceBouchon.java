@@ -19,6 +19,7 @@ public class FilmServiceBouchon implements IFilmService {
 	private static List<Film> lstFilms = new ArrayList<>();
 	private static List<Genre> lstGenres = new ArrayList<>();
 	private static List<Participant> lstParticipants = new ArrayList<>();
+	private static List<Membre> lstMembres = new ArrayList<>();
 	private static int indexFilms = 1;
 
 	// Représente la table en base de données des genres des films
@@ -51,6 +52,11 @@ public class FilmServiceBouchon implements IFilmService {
 	@Override
 	public List<Participant> consulterParticipants() {
 		return lstParticipants;
+	}
+
+	@Override
+	public List<Membre> consulterMembres() {
+		return lstMembres;
 	}
 
 	@Override
@@ -138,6 +144,10 @@ public class FilmServiceBouchon implements IFilmService {
 
 		// Création d'un membre et un avis
 		Membre membre1 = new Membre(1L, "Baille", "Anne-Lise", "abaille@campus-eni.fr", null);
+		Membre membre2 = new Membre(1L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", null);
+		membre2.setAdmin(true);
+		lstMembres.add(membre1);
+		lstMembres.add(membre2);
 		Avis avis = new Avis(1L, 4, "On rit du début à la fin", membre1);
 		bienvenueChezLesChtis.getAvis().add(avis);
 	}

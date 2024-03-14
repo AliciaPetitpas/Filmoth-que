@@ -60,7 +60,7 @@ nav {
     align-items: flex-end;
     position: absolute;
     right: 1.5rem;
-    bottom: 0.75rem;
+    top: 4rem;
 }
 
 footer {
@@ -177,4 +177,21 @@ textarea {
 
 .flex {
     display: flex;
+}
+
+.error {
+    margin: 5px;
+    color: red;
+    width: 100%;
+    text-align: center;
+}
+
+.svg-red {
+    fill: red;
+    cursor: default;
+}
+
+.svg-green {
+    fill: green;
+    cursor: default;
 }

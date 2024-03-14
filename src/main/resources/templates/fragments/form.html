@@ -1,15 +1,15 @@
 <form th:fragment="form(film, isReadOnly)">
     <div class="label-input">
+        <label for="titre">Titre :</label>
+        <input type="text" id="titre" name="titre" th:value="${film.Titre}" th:disabled="${isReadOnly}">
+    </div>
+    <div class="label-input">
         <label for="genre">Genre :</label>
         <input type="text" id="genre" name="genre" th:value="${film.genre.Titre}" th:disabled="${isReadOnly}">
     </div>
     <div class="label-input">
         <label for="annee">Année :</label>
         <input type="text" id="annee" name="annee" th:value="${film.Annee}" th:disabled="${isReadOnly}">
-    </div>
-    <div class="label-input">
-        <label for="titre">Titre :</label>
-        <input type="text" id="titre" name="titre" th:value="${film.Titre}" th:disabled="${isReadOnly}">
     </div>
     <div class="label-input">
         <label for="realisateur">Réalisateur :</label>
