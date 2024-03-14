@@ -1,14 +1,22 @@
 package fr.eni.filmotheque.bo;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Avis {
     private Long Id;
-    private Integer Note;
-    private String Commentaire;
+    @NotNull(message = "Veuillez saisir une note entre 1 et 5")
+    @Min(1)
+    @Max(5)
+    public Integer Note;
+    public String Commentaire;
     private Membre Membre;
 
     public Avis(Integer note, String commentaire, Membre membre) {

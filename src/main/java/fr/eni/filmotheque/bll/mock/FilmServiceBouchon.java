@@ -154,8 +154,8 @@ public class FilmServiceBouchon implements IFilmService {
 		membre2.setAdmin(true);
 		lstMembres.add(membre1);
 		lstMembres.add(membre2);
-		Avis avis = new Avis(1L, 4, "On rit du début à la fin", membre1);
-		lstAvis.add(avis);
-		bienvenueChezLesChtis.getAvis().add(avis);
+		Avis avis1 = new Avis(1L, 4, "On rit du début à la fin", membre1);
+		lstAvis.add(avis1);
+		bienvenueChezLesChtis.getAvis().add(avis1);
 	}
 }

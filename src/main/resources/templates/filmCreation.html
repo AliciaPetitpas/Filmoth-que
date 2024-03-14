@@ -10,9 +10,9 @@
     <a href="/films">Liste des films</a>
 
     <form action="filmCreation" method="post" th:object="${film}">
-        <div class="label-input">
-            <label for="titre">Titre :</label>
-            <input type="text" id="titre" th:field="*{Titre}">
+        <div class="label-input input-container">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" th:field="*{Titre}" required>
         </div>
         <span class="error" th:errors="*{Titre}"></span>
         <div class="label-input">
@@ -21,7 +21,7 @@
                 <option th:each="genre : ${listeGenres}" th:text="${genre.Titre}" th:value="${genre.Id}"></option>
             </select>
         </div>
-        <div class="label-input">
+        <div class="label-input input-container">
             <label for="annee">Année :</label>
             <input type="text" id="annee" th:field="*{Annee}">
         </div>
@@ -31,14 +31,14 @@
                 <option th:each="realisateur : ${listeParticipants}" th:text="|${realisateur.Prenom} ${realisateur.Nom}|" th:value="${realisateur.Id}"></option>
             </select>
         </div>
-        <div class="label-input">
+        <div class="label-input input-container">
             <label for="duree">Durée :</label>
             <input type="text" id="duree" th:field="*{Duree}">
         </div>
         <div class="label-input">
             <label for="acteurs">Acteur(s) :</label>
             <ul id="acteurs">
-                <li th:each="acteur : ${listeParticipants}">
+                <li th:each="acteur : ${listeParticipants}" class="liste-acteurs">
                     <input type="checkbox" th:text="|${acteur.Prenom} ${acteur.Nom}|" th:value="${acteur.Id}" th:field="*{listeParticipant}" />
                 </li>
             </ul>
