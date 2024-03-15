@@ -3,13 +3,17 @@
       th:object="${membre}">
     <div class="label-input">
         <label>Nom</label>
-        <input type="text" th:field="*{Nom}" class="hidden" />
-        <p th:text="*{Nom}"></p>
+        <input type="text" th:field="*{Nom}" th:class="*{Nom != null ? 'hidden' : 'flex'}" />
+        <div th:if="*{Nom != null}">
+            <p th:text="*{Nom}"></p>
+        </div>
     </div>
     <div class="label-input">
         <label>Prénom</label>
-        <input type="text" th:field="*{Prenom}" class="hidden" />
-        <p th:text="*{Prenom}"></p>
+        <input type="text" th:field="*{Prenom}" th:class="*{Prenom != null ? 'hidden' : 'flex'}" />
+        <div th:if="*{Prenom != null}">
+            <p th:text="*{Prenom}"></p>
+        </div>
     </div>
     <div class="label-input">
         <label>Pseudo</label>
