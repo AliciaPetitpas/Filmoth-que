@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/main}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Avis</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <h2>Créer un avis</h2>
+    <a href="/avisCreation/" class="link-button">Liste des films</a>
+
+    <form id="form-avis" th:action="|/avisCreation/${film.Id}|" method="post" th:object="${avis}">
+        <input type="text" class="hidden" th:value="${film.Id}" />
+
+        <div class="label-input">
+            <label>Note</label>
+            <input type="number" min="1" max="5" th:field="*{Note}" />
+        </div>
+        <span class="error" th:errors="*{Note}"></span>
+
+        <div class="label-input">
+            <label>Commentaire</label>
+            <textarea th:field="*{Commentaire}" rows="5" cols="30"></textarea>
+        </div>
+
+        <button type="submit">
+            Valider
+        </button>
+    </form>
+</main>
+
+</body>
+</html>

@@ -35,34 +35,9 @@ public class FilmController {
     @GetMapping("/films/{id}")
     public String getFilmDetail(@PathVariable("id") long id, Model model) {
         model.addAttribute("film", filmService.consulterFilmParId(id));
-        model.addAttribute("avis", new Avis());
         model.addAttribute("isReadOnly", true);
 
         return "filmDetails";
-    }
-
-    @PostMapping("/films/{id}")
-    public String postFilmDetail(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model) {
-        model.addAttribute("avis", new Avis());
-        model.addAttribute("isReadOnly", true);
-
-        if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
-            model.addAttribute("film", filmService.consulterFilmParId(id));
-
-            return "filmDetails";
-        }
-
-        listeAvis = filmService.consulterAvis(id);
-
-        avis.setId((long) (listeAvis.size() + 1));
-        listeAvis.add(avis);
-
-        filmService.consulterFilmParId(id).getAvis().add(avis);
-
-        model.addAttribute("films", filmService.consulterFilms());
-
-        return "redirect:/films";
     }
 
     @GetMapping("/filmCreation")

@@ -8,32 +8,6 @@
         <a href="/films" class="link-button">Liste des films</a>
 
         <form th:replace="~{fragments/form :: form(${film}, ${isReadOnly})}"></form>
-
-        <button type="button" id="add-avis" onclick="addAvis()">Ajouter un avis</button>
-
-        <form id="form-avis" th:action="${film.Id}" method="post" class="hidden" th:object="${avis}">
-            <input type="text" class="hidden" th:value="${film.Id}" />
-
-            <div class="label-input">
-                <label>Note</label>
-                <input type="number" min="1" max="5" th:field="*{Note}" />
-            </div>
-            <span class="error" th:errors="*{Note}"></span>
-
-            <div class="label-input">
-                <label>Commentaire</label>
-                <textarea th:field="*{Commentaire}" rows="5" cols="30"></textarea>
-            </div>
-
-            <div class="label-input">
-                <label>Pseudo</label>
-                <input type="text" th:field="*{Membre.Pseudo}" />
-            </div>
-
-            <button type="submit">
-                Valider
-            </button>
-        </form>
     </main>
 </body>
 </html>

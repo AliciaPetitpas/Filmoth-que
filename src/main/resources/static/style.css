@@ -285,6 +285,7 @@ textarea {
     border-radius: 5px;
     box-shadow: 0 0 3px var(--primary-color);
     width: 250px;
+    background-color: rgba(239, 239, 239, 0.3);
 }
 
 .avis-header {

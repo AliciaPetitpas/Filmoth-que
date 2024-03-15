@@ -14,15 +14,3 @@ function openMenu() {
     }
 }
 
-function addAvis() {
-    let formAvis = document.getElementById("form-avis");
-    let buttonAvis = document.getElementById("add-avis");
-
-    if (formAvis.classList.contains("hidden")) {
-        formAvis.classList.replace("hidden", "flex")
-        buttonAvis.classList.add("hidden");
-    } else {
-        formAvis.classList.replace("flex", "hidden");
-        buttonAvis.classList.remove("hidden")
-    }
-}
