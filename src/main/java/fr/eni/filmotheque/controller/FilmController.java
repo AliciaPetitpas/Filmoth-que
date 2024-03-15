@@ -48,17 +48,22 @@ public class FilmController {
         model.addAttribute("isReadOnly", isReadOnly);
 
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult);
             model.addAttribute("film", filmService.consulterFilmParId(id));
 
-            return "/films";
+            return "filmDetails";
         }
 
         listeAvis = filmService.consulterAvis(id);
+
         avis.setId((long) (listeAvis.size() + 1));
+        listeAvis.add(avis);
 
-        System.out.println(listeAvis);
+        filmService.consulterFilmParId(id).getAvis().add(avis);
 
-        return "redirect:/filmDetails";
+        model.addAttribute("films", filmService.consulterFilms());
+
+        return "redirect:/films";
     }
 
     @GetMapping("/filmCreation")
@@ -73,7 +78,6 @@ public class FilmController {
     @PostMapping("/filmCreation")
     public String postCreationFilm(@Valid Film film, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
             model.addAttribute("listeGenres", filmService.consulterGenres());
             model.addAttribute("listeParticipants", filmService.consulterParticipants());
             return "filmCreation";

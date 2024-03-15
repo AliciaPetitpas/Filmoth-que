@@ -17,7 +17,7 @@ public class Avis {
     @Max(5)
     public Integer Note;
     public String Commentaire;
-    private Membre Membre;
+    public Membre Membre;
 
     public Avis(Integer note, String commentaire, Membre membre) {
         this.Note = note;

@@ -9,7 +9,7 @@
     <h1>Genres</h1>
     <form action="/genres" method="post" th:object="${genre}">
         <div class="label-input">
-            <label>Titre :</label>
+            <label>Titre</label>
             <input type="text" th:field="*{Titre}" />
         </div>
         <span class="error" th:errors="*{Titre}"></span>

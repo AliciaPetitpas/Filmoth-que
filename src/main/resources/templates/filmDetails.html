@@ -5,10 +5,13 @@
 <body>
     <main layout:fragment="content">
         <h2>Détails du film</h2>
+        <a href="/films" class="link-button">Liste des films</a>
 
         <form th:replace="~{fragments/form :: form(${film}, ${isReadOnly})}"></form>
 
-        <form method="post" th:object="${avis}">
+        <button type="button" id="add-avis" onclick="addAvis()">Ajouter un avis</button>
+
+        <form id="form-avis" th:action="${film.Id}" method="post" class="hidden" th:object="${avis}">
             <input type="text" class="hidden" th:value="${film.Id}" />
 
             <div class="label-input">
@@ -19,25 +22,18 @@
 
             <div class="label-input">
                 <label>Commentaire</label>
-                <textarea th:field="*{Commentaire}"></textarea>
+                <textarea th:field="*{Commentaire}" rows="5" cols="30"></textarea>
             </div>
 
             <div class="label-input">
                 <label>Pseudo</label>
                 <input type="text" th:field="*{Membre.Pseudo}" />
             </div>
-            <span class="error" th:errors="*{Membre.Pseudo}"></span>
 
             <button type="submit">
                 Valider
             </button>
         </form>
-
-        <a class="retour" href="/films">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="button-menu svg-primary">
-                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
-            </svg>
-        </a>
     </main>
 </body>
 </html>

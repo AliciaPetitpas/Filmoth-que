@@ -9,12 +9,12 @@
     <h1>Participants</h1>
     <form action="/participants" method="post" th:object="${participant}">
         <div class="label-input">
-            <label>Nom :</label>
+            <label>Nom</label>
             <input type="text" th:field="*{Nom}" />
         </div>
         <span class="error" th:errors="*{Nom}"></span>
         <div class="label-input">
-            <label>Prénom :</label>
+            <label>Prénom</label>
             <input type="text" th:field="*{Prenom}" />
         </div>
         <span class="error" th:errors="*{Prenom}"></span>

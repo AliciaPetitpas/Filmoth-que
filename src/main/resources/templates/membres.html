@@ -9,22 +9,22 @@
     <h1>Membres</h1>
     <form action="/membres" method="post" th:object="${membre}">
         <div class="label-input">
-            <label>Nom :</label>
+            <label>Nom</label>
             <input type="text" th:field="*{Nom}" />
         </div>
         <span class="error" th:errors="*{Nom}"></span>
         <div class="label-input">
-            <label>Prénom :</label>
+            <label>Prénom</label>
             <input type="text" th:field="*{Prenom}" />
         </div>
         <span class="error" th:errors="*{Prenom}"></span>
         <div class="label-input">
-            <label>Pseudo :</label>
+            <label>Pseudo</label>
             <input type="text" th:field="*{Pseudo}" />
         </div>
         <span class="error" th:errors="*{Pseudo}"></span>
         <div class="label-input">
-            <label>Admin :</label>
+            <label>Admin</label>
             <input type="checkbox" th:field="*{admin}" />
         </div>
         <button type="submit">

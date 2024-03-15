@@ -4,10 +4,15 @@
 </head>
 <body>
     <main layout:fragment="content">
-        <h2 th:if="${films.isEmpty()}">Aucun film</h2>
+        <section th:if="${films.isEmpty()}">
+            <h2>Aucun film</h2>
+            <a href="/filmCreation" class="link-button">Ajouter un film</a>
+
+        </section>
 
         <section th:if="${!films.isEmpty()}">
             <h2>Liste des films</h2>
+            <a href="/filmCreation" class="link-button">Ajouter un film</a>
 
             <table>
                 <thead>
@@ -37,8 +42,6 @@
                 </tbody>
             </table>
         </section>
-
-        <a href="/filmCreation">Ajouter un film</a>
     </main>
 </body>
 </html>
