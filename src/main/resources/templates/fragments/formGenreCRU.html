@@ -1,0 +1,12 @@
+<form th:fragment="form(genre, type)"
+      method="post"
+      th:object="${genre}">
+    <div class="label-input">
+        <label>Titre</label>
+        <input type="text" th:field="*{Titre}" />
+    </div>
+    <span class="error" th:errors="*{Titre}"></span>
+    <button type="submit">
+        Valider
+    </button>
+</form>

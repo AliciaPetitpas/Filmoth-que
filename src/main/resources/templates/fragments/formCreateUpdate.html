@@ -1,4 +1,6 @@
-<form th:fragment="form(film, type, listeGenres, listeParticipants)" th:action="${type == 'create' ? '' : ''}" method="post" th:object="${film}">
+<form th:fragment="form(film, type, listeGenres, listeParticipants)"
+      method="post"
+      th:object="${film}">
     <div class="label-input">
         <label for="titre">Titre</label>
         <input type="text" id="titre" th:field="*{Titre}">

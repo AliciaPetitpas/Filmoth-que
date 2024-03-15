@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/main}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <title>Genres</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+  <h2>Ajouter un genre</h2>
+  <a href="/genres" class="link-button">Liste des genres</a>
+
+  <form th:replace="~{fragments/formGenreCRU :: form(${genre}, 'create')}"></form>
+</main>
+
+</body>
+</html>
