@@ -72,14 +72,14 @@ public class GenreController {
     public String getUpdateGenre(@PathVariable("id") long id, Model model) {
         model.addAttribute("genre", filmService.consulterGenreParId(id));
 
-        return "genreCreation";
+        return "genreUpdate";
     }
 
     @PostMapping("/genreUpdate/{id}")
     public String postUpdateGenre(@PathVariable("id") long id, @Valid Genre genre, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("genre", filmService.consulterGenreParId(id));
-            return "genreCreation";
+            return "genreUpdate";
         }
 
         Genre genreAUpdate = filmService.consulterGenreParId(id);
