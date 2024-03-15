@@ -79,17 +79,16 @@ public class MembreController {
     @PostMapping("/membreUpdate/{id}")
     public String postUpdateGenre(@PathVariable("id") long id, @Valid Membre membre, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
+            System.out.println(membre);
             model.addAttribute("membre", filmService.consulterMembreParId(id));
             return "membreUpdate";
         }
 
         Membre membreAUpdate = filmService.consulterMembreParId(id);
-        membreAUpdate.setNom(membre.getNom());
-        membreAUpdate.setPrenom(membre.getPrenom());
+        membreAUpdate.setNom(membre.Nom);
+        membreAUpdate.setPrenom(membre.Prenom);
         membreAUpdate.setPseudo(membre.Pseudo);
         membreAUpdate.setAdmin(membre.isAdmin);
-
 
         listeMembres = filmService.consulterMembres();
 

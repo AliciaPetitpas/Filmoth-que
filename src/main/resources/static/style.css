@@ -170,6 +170,10 @@ form {
     gap: 0.5rem;
 }
 
+form p {
+    margin: 0;
+}
+
 .label-input {
     width: 100%;
     display: flex;

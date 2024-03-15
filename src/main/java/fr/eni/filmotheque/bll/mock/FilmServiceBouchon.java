@@ -155,7 +155,7 @@ public class FilmServiceBouchon implements IFilmService {
 
 		// Création d'un membre et un avis
 		Membre membre1 = new Membre(1L, "Baille", "Anne-Lise", "abaille@campus-eni.fr", null);
-		Membre membre2 = new Membre(1L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", null);
+		Membre membre2 = new Membre(2L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", null);
 		membre2.setAdmin(true);
 		lstMembres.add(membre1);
 		lstMembres.add(membre2);
