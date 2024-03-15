@@ -18,6 +18,7 @@ public class Film {
 
     @Setter
     public Genre genre;
+    @Setter
     public Participant realisateur;
     public List<Avis> listeAvis = new ArrayList<>();
     public List<Participant> listeParticipant = new ArrayList<>();
@@ -35,10 +36,6 @@ public class Film {
         this.Annee = annee;
         this.Duree = duree;
         this.Synopsis = synopsis;
-    }
-
-    public void setRealisateur(Participant realisateur) {
-        this.realisateur = realisateur;
     }
 
     public List<Participant> getActeurs() {

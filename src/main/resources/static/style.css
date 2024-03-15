@@ -15,7 +15,7 @@ body {
     margin: 0 auto;
     align-items: center;
     color: var(--primary-color);
-    background-color: pink;
+    background-color: rgba(202, 178, 159, 70%);
 }
 
 main {

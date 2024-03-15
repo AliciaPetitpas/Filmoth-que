@@ -31,8 +31,7 @@
             </thead>
             <tbody>
             <tr th:each="genre : ${genres}">
-                <td th:text="|${genre.Id} - ${genre.Titre}|"></td>
-<!--                <td th:text="${genre.Titre}"></td>-->
+                <td th:text="${genre.Titre}"></td>
                 <td>
                     <a class="link-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="button-menu svg-primary">

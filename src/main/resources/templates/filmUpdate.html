@@ -1,16 +1,13 @@
-<!DOCTYPE html>
 <html lang="en" layout:decorate="~{layout/main}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title>Films</title>
+    <title>Filmothèque</title>
 </head>
 <body>
-
 <main layout:fragment="content">
-    <h2>Ajouter un film</h2>
+    <h2>Mise à jour du film</h2>
     <a href="/films" class="link-button">Liste des films</a>
 
-    <form th:replace="~{fragments/formCreateUpdate :: form(${film}, 'create', ${listeGenres}, ${listeParticipants})}"></form>
+    <form th:replace="~{fragments/formCreateUpdate :: form(${film}, 'update', ${listeGenres}, ${listeParticipants})}"></form>
 </main>
-
 </body>
 </html>

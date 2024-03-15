@@ -23,7 +23,6 @@ public class FilmController {
 
     private List<Film> listeFilms = new ArrayList<>();
     List<Avis> listeAvis = new ArrayList<>();
-    private Boolean isReadOnly = true;
 
     @GetMapping("/films")
     public String getFilms(Model model) {
@@ -37,7 +36,7 @@ public class FilmController {
     public String getFilmDetail(@PathVariable("id") long id, Model model) {
         model.addAttribute("film", filmService.consulterFilmParId(id));
         model.addAttribute("avis", new Avis());
-        model.addAttribute("isReadOnly", isReadOnly);
+        model.addAttribute("isReadOnly", true);
 
         return "filmDetails";
     }
@@ -45,7 +44,7 @@ public class FilmController {
     @PostMapping("/films/{id}")
     public String postFilmDetail(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model) {
         model.addAttribute("avis", new Avis());
-        model.addAttribute("isReadOnly", isReadOnly);
+        model.addAttribute("isReadOnly", true);
 
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult);
@@ -91,4 +90,36 @@ public class FilmController {
         return "redirect:/films";
     }
 
+    @GetMapping("/filmUpdate/{id}")
+    public String getFilmUpdate(@PathVariable("id") long id, Model model) {
+        model.addAttribute("listeGenres", filmService.consulterGenres());
+        model.addAttribute("listeParticipants", filmService.consulterParticipants());
+        model.addAttribute("film", filmService.consulterFilmParId(id));
+        model.addAttribute("isReadOnly", false);
+
+        return "filmUpdate";
+    }
+
+    @PostMapping("/filmUpdate/{id}")
+    public String postFilmUpdate(@PathVariable("id") long id, @Valid Film film, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("listeGenres", filmService.consulterGenres());
+            model.addAttribute("listeParticipants", filmService.consulterParticipants());
+            model.addAttribute("film", filmService.consulterFilmParId(id));
+            return "filmUpdate";
+        }
+
+        Film filmAUpdate = filmService.consulterFilmParId(id);
+        filmAUpdate.setTitre(film.Titre);
+        filmAUpdate.setGenre(film.genre);
+        filmAUpdate.setAnnee(film.Annee);
+        filmAUpdate.setRealisateur(film.realisateur);
+        filmAUpdate.setDuree(film.Duree);
+        filmAUpdate.setListeParticipant(film.listeParticipant);
+        filmAUpdate.setSynopsis(film.Synopsis);
+
+        listeFilms = filmService.consulterFilms();
+
+        return "redirect:/films";
+    }
 }
