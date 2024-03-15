@@ -14,3 +14,13 @@ function openMenu() {
     }
 }
 
+
+function backgroundColor() {
+    let body = document.getElementById("body");
+
+    if (body.classList.contains('bg-default')) {
+        body.classList.replace('bg-default', 'bg-pink');
+    } else {
+        body.classList.replace('bg-pink', 'bg-default');
+    }
+}
