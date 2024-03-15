@@ -23,4 +23,6 @@ public interface IFilmService {
     List<Avis> consulterAvis(long idFilm);
 
     void creerFilm(Film film);
+
+    Membre consulterMembreParId(long id);
 }

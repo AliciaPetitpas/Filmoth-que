@@ -86,6 +86,11 @@ public class FilmServiceBouchon implements IFilmService {
 		lstFilms.add(film);
 	}
 
+	@Override
+	public Membre consulterMembreParId(long id) {
+		return lstMembres.stream().filter(item -> item.getId() == id).findAny().orElse(null);
+	}
+
 	/**
 	 * Cette méthode permet de simuler le stockage en base de données et la remontée
 	 * d'information

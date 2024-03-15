@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout/main}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Membres</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <h2>Ajouter un membre</h2>
+    <a href="/membres" class="link-button">Liste des membres</a>
+
+    <form th:replace="~{fragments/formMembreCRU :: form(${membre}, 'create')}"></form>
+</main>
+
+</body>
+</html>

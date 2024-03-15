@@ -4,7 +4,7 @@
 </head>
 <body>
 <main layout:fragment="content">
-    <h2>Mise à jour du film</h2>
+    <h2>Modifier un film</h2>
     <a href="/films" class="link-button">Liste des films</a>
 
     <form th:replace="~{fragments/formCreateUpdate :: form(${film}, 'update', ${listeGenres}, ${listeParticipants})}"></form>
