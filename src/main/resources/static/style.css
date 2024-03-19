@@ -78,6 +78,7 @@ nav form {
 
 .button-nav:hover {
     color: var(--secondary-color) !important;
+    transform: scale(1.1);
 }
 
 .menu {
@@ -134,6 +135,7 @@ a {
 
 a:hover {
     color: var(--tertiary-color);
+    transform: scale(1.1);
 }
 
 section {
@@ -184,6 +186,7 @@ tbody tr:hover {
 .link-button:hover {
     text-decoration: underline;
     color: var(--tertiary-color);
+    transform: scale(1.1);
 }
 
 form {
@@ -242,6 +245,7 @@ textarea {
 
 .svg-primary:hover {
     fill: var(--tertiary-color);
+    transform: scale(1.1);
 }
 
 .svg-secondary {
@@ -250,6 +254,7 @@ textarea {
 
 .svg-secondary:hover {
     fill: var(--tertiary-color);
+    transform: scale(1.1);
 }
 
 .hidden {
@@ -298,6 +303,7 @@ textarea {
 
 .stars-note:hover svg {
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .empty-star {
@@ -365,6 +371,7 @@ button[type="submit"], button[type="button"] {
 
 button[type="submit"]:hover, button[type="button"]:hover {
     background-color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 /*
