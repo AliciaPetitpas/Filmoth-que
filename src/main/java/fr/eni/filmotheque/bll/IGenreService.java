@@ -11,7 +11,7 @@ public interface IGenreService {
 
     Optional<Genre> consulterGenreParId(long id);
 
-    Genre enregistrerGenre(Genre genre);
+    Genre creerGenre(Genre genre);
 
     void deleteGenre(Long id);
 }

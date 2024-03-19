@@ -42,35 +42,34 @@ public class GenreController {
             return "genreCreation";
         }
 
-        genreServiceJpa.enregistrerGenre(genre);
+        genreServiceJpa.creerGenre(genre);
 
         return "redirect:/genres";
     }
 
     @GetMapping("/genreDelete/{id}")
-    public String getDeleteGenre(@PathVariable("id") long id, Model model) {
+    public String getDeleteGenre(@PathVariable("id") long id) {
         genreServiceJpa.deleteGenre(id);
-        model.addAttribute("genres", genreServiceJpa.consulterGenres());
 
         return "redirect:/genres";
     }
 
-//    @GetMapping("/genreUpdate/{id}")
-//    public String getUpdateGenre(@PathVariable("id") long id, Model model) {
-//        model.addAttribute("genre", genreServiceJpa.consulterGenreParId(id));
-//
-//        return "genreUpdate";
-//    }
-//
-//    @PostMapping("/genreUpdate/{id}")
-//    public String postUpdateGenre(@PathVariable("id") long id, @Valid Genre genre, BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("genre", genreServiceJpa.consulterGenreParId(id));
-//            return "genreUpdate";
-//        }
-//
-//        genreServiceJpa.enregistrerGenre(genre);
-//
-//        return "redirect:/genres";
-//    }
+    @GetMapping("/genreUpdate/{id}")
+    public String getUpdateGenre(@PathVariable("id") long id, Model model) {
+        model.addAttribute("genre", genreServiceJpa.consulterGenreParId(id));
+
+        return "genreUpdate";
+    }
+
+    @PostMapping("/genreUpdate/{id}")
+    public String postUpdateGenre(@PathVariable("id") long id, @Valid Genre genre, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("genre", genreServiceJpa.consulterGenreParId(id));
+            return "genreUpdate";
+        }
+
+        genreServiceJpa.creerGenre(genre);
+
+        return "redirect:/genres";
+    }
 }

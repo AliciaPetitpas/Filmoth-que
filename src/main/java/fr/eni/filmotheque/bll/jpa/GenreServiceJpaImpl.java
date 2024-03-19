@@ -27,7 +27,7 @@ public class GenreServiceJpaImpl implements IGenreService {
     }
 
     @Override
-    public Genre enregistrerGenre(Genre genre) {
+    public Genre creerGenre(Genre genre) {
         return genreJpaRepository.save(genre);
     }
 
