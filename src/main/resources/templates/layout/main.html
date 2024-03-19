@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Titre par défaut</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/script.js"></script>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script th:src="@{/script.js}"></script>
 </head>
 <body id="body" class="bg-default">
     <header th:replace="~{fragments/header}"/>

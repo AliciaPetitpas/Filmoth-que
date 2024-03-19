@@ -12,9 +12,22 @@
       <div class="menu-content">
         <a href="/">Accueil</a>
         <a href="/films">Films</a>
-        <a href="/genres">Genres</a>
-        <a href="/participants">Participants</a>
-        <a href="/membres">Membres</a>
+        <a sec:authorize="isAuthenticated()" href="/genres">Genres</a>
+        <a sec:authorize="isAuthenticated()" href="/participants">Participants</a>
+        <a sec:authorize="hasRole('admin')" href="/membres">Membres</a>
+        <!-- on affiche cette section uniquement si l'utilisateur est connecté -->
+        <section sec:authorize="isAuthenticated()">
+          <!-- on offre la possibilité de se déconnecter : il suffit de faire une requête POST sur l'url : /logout-->
+          <form th:action="@{/logout}" method="post">
+            <!-- ${#authentication.name}" : recupère le username de l'utilisateur connecté-->
+            <button type="submit" class="button-nav">Se déconnecter</button>
+          </form>
+        </section>
+        <!-- on n'affiche cette section que pour les utilisateurs NON connectés -->
+        <section sec:authorize="!isAuthenticated()">
+          <!-- on offre la possibilité de se connecter -->
+          <a th:href="@{/login}">Se connecter</a>
+        </section>
       </div>
     </div>
   </nav>

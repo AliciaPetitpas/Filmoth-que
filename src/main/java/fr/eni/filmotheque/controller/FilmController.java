@@ -1,6 +1,7 @@
 package fr.eni.filmotheque.controller;
 
 import fr.eni.filmotheque.bll.IFilmService;
+import fr.eni.filmotheque.bll.jpa.GenreServiceJpaImpl;
 import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.bo.Film;
 import jakarta.validation.Valid;
@@ -20,6 +21,9 @@ public class FilmController {
 
     @Autowired
     private IFilmService filmService;
+
+    @Autowired
+    private GenreServiceJpaImpl genreServiceJpa;
 
     private List<Film> listeFilms = new ArrayList<>();
     List<Avis> listeAvis = new ArrayList<>();
@@ -43,7 +47,7 @@ public class FilmController {
     @GetMapping("/filmCreation")
     public String getCreationFilm(Model model) {
         model.addAttribute("film", new Film());
-        model.addAttribute("listeGenres", filmService.consulterGenres());
+        model.addAttribute("listeGenres", genreServiceJpa.consulterGenres());
         model.addAttribute("listeParticipants", filmService.consulterParticipants());
 
         return "filmCreation";
@@ -52,7 +56,7 @@ public class FilmController {
     @PostMapping("/filmCreation")
     public String postCreationFilm(@Valid Film film, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("listeGenres", filmService.consulterGenres());
+            model.addAttribute("listeGenres", genreServiceJpa.consulterGenres());
             model.addAttribute("listeParticipants", filmService.consulterParticipants());
             return "filmCreation";
         }
@@ -67,7 +71,7 @@ public class FilmController {
 
     @GetMapping("/filmUpdate/{id}")
     public String getFilmUpdate(@PathVariable("id") long id, Model model) {
-        model.addAttribute("listeGenres", filmService.consulterGenres());
+        model.addAttribute("listeGenres", genreServiceJpa.consulterGenres());
         model.addAttribute("listeParticipants", filmService.consulterParticipants());
         model.addAttribute("film", filmService.consulterFilmParId(id));
         model.addAttribute("isReadOnly", false);
@@ -78,7 +82,7 @@ public class FilmController {
     @PostMapping("/filmUpdate/{id}")
     public String postFilmUpdate(@PathVariable("id") long id, @Valid Film film, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("listeGenres", filmService.consulterGenres());
+            model.addAttribute("listeGenres", genreServiceJpa.consulterGenres());
             model.addAttribute("listeParticipants", filmService.consulterParticipants());
             model.addAttribute("film", filmService.consulterFilmParId(id));
             return "filmUpdate";

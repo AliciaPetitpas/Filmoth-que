@@ -5,6 +5,7 @@
     <body>
         <main layout:fragment="content">
             <h2>Bibliothèque de films</h2>
+            <p sec:authorize="isAuthenticated()" th:text="|Bienvenue, ${#authentication.name} !|"></p>
         </main>
     </body>
 </html>

@@ -2,9 +2,10 @@ package fr.eni.filmotheque.controller;
 
 import fr.eni.filmotheque.bll.IFilmService;
 import fr.eni.filmotheque.bo.Avis;
-import fr.eni.filmotheque.bo.Film;
+import fr.eni.filmotheque.security.Utilisateur;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +32,7 @@ public class AvisController {
     }
 
     @PostMapping("/avisCreation/{id}")
-    public String postCreationAvis(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model) {
+    public String postCreationAvis(@PathVariable("id") long id, @Valid Avis avis, @AuthenticationPrincipal Utilisateur userConnected, BindingResult bindingResult, Model model) {
         model.addAttribute("avis", new Avis());
 
         if (bindingResult.hasErrors()) {
@@ -42,7 +43,7 @@ public class AvisController {
 
         listeAvis = filmService.consulterAvis(id);
 
-        avis.setMembre(filmService.consulterMembreParId(2));
+        avis.setMembre(userConnected.getMembre());
         avis.setId((long) (listeAvis.size() + 1));
         listeAvis.add(avis);
 

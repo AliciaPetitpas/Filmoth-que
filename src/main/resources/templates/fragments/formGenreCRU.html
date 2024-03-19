@@ -1,6 +1,7 @@
 <form th:fragment="form(genre, type)"
       method="post"
-      th:object="${genre}">
+      th:object="${genre}"
+      th:action="@{/genreCreation}">
     <div class="label-input">
         <label>Titre</label>
         <input type="text" th:field="*{Titre}" />

@@ -23,13 +23,13 @@ public class FilmServiceBouchon implements IFilmService {
 	private static List<Avis> lstAvis = new ArrayList<>();
 	private static int indexFilms = 1;
 
-	// Représente la table en base de données des genres des films
-	private static final String[] genres = { "Animation", "Science-fiction", "Documentaire", "Action", "Comédie",
-			"Drame" };
-
 	public FilmServiceBouchon() {
 		simulationCoucheDALetDB();
 	}
+
+	// Représente la table en base de données des genres des films
+	private static final String[] genres = { "Animation", "Science-fiction", "Documentaire", "Action", "Comédie", "Drame" };
+
 
 	@Override
 	public List<Film> consulterFilms() {
@@ -45,10 +45,6 @@ public class FilmServiceBouchon implements IFilmService {
 		return lstFilms.stream().filter(item -> item.getId() == id).findAny().orElse(null);
 	}
 
-	@Override
-	public List<Genre> consulterGenres() {
-		return lstGenres;
-	}
 
 	@Override
 	public List<Participant> consulterParticipants() {
@@ -58,11 +54,6 @@ public class FilmServiceBouchon implements IFilmService {
 	@Override
 	public List<Membre> consulterMembres() {
 		return lstMembres;
-	}
-
-	@Override
-	public Genre consulterGenreParId(long id) {
-		return lstGenres.stream().filter(item -> item.getId() == id).findAny().orElse(null);
 	}
 
 	/**
@@ -154,8 +145,8 @@ public class FilmServiceBouchon implements IFilmService {
 		lstFilms.add(bienvenueChezLesChtis);
 
 		// Création d'un membre et un avis
-		Membre membre1 = new Membre(1L, "Baille", "Anne-Lise", "abaille@campus-eni.fr", null);
-		Membre membre2 = new Membre(2L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", null);
+		Membre membre1 = new Membre(1L, "Baille", "Anne-Lise", "abaille@campus-eni.fr", "membre1");
+		Membre membre2 = new Membre(2L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", "membre2");
 		membre2.setAdmin(true);
 		lstMembres.add(membre1);
 		lstMembres.add(membre2);
