@@ -1,24 +1,14 @@
 package fr.eni.filmotheque.bll;
 
 import fr.eni.filmotheque.bo.*;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IFilmService {
     List<Film> consulterFilms();
 
-    Film consulterFilmParId(long id);
-
-    List<Participant> consulterParticipants();
-
-    List<Membre> consulterMembres();
-
-    Participant consulterParticipantParId(long id);
-
-    List<Avis> consulterAvis(long idFilm);
+    Optional<Film> consulterFilmParId(long id);
 
     void creerFilm(Film film);
-
-    Membre consulterMembreParId(long id);
 }

@@ -1,5 +1,8 @@
 package fr.eni.filmotheque.bo;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Participant extends Personne {
 
     public Participant(Long Id, String Nom, String Prenom) {

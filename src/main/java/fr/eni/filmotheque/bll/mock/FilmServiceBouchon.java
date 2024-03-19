@@ -2,6 +2,8 @@ package fr.eni.filmotheque.bll.mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import fr.eni.filmotheque.bll.IFilmService;
 import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.bo.Film;
@@ -37,11 +39,11 @@ public class FilmServiceBouchon implements IFilmService {
 	}
 
 	/**
-	 * @return film si id correspond
-	 * @return null si inconnu
-	 */
+     * @return film si id correspond
+     * @return null si inconnu
+     */
 	@Override
-	public Film consulterFilmParId(long id) {
+	public Optional<Film> consulterFilmParId(long id) {
 		return lstFilms.stream().filter(item -> item.getId() == id).findAny().orElse(null);
 	}
 
