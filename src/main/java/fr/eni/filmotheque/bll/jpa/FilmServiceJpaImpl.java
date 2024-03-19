@@ -4,11 +4,13 @@ import fr.eni.filmotheque.bll.IFilmService;
 import fr.eni.filmotheque.bo.Film;
 import fr.eni.filmotheque.dal.FilmJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Profile("prod")
 @Service
 public class FilmServiceJpaImpl implements IFilmService {
     @Autowired

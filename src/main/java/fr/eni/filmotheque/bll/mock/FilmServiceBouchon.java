@@ -2,9 +2,8 @@ package fr.eni.filmotheque.bll.mock;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import fr.eni.filmotheque.bll.IFilmService;
+import fr.eni.filmotheque.bll.IFilmServiceMock;
 import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.bo.Film;
 import fr.eni.filmotheque.bo.Genre;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Profile("dev")
 @Service
-public class FilmServiceBouchon implements IFilmService {
+public class FilmServiceBouchon implements IFilmServiceMock {
 	// Attributs statiques pour gérer les valeurs à afficher et simuler les données
 	// en base
 	private static List<Film> lstFilms = new ArrayList<>();
@@ -43,8 +42,13 @@ public class FilmServiceBouchon implements IFilmService {
      * @return null si inconnu
      */
 	@Override
-	public Optional<Film> consulterFilmParId(long id) {
+	public Film consulterFilmParId(long id) {
 		return lstFilms.stream().filter(item -> item.getId() == id).findAny().orElse(null);
+	}
+
+	@Override
+	public List<Genre> consulterGenres() {
+		return null;
 	}
 
 
@@ -56,6 +60,11 @@ public class FilmServiceBouchon implements IFilmService {
 	@Override
 	public List<Membre> consulterMembres() {
 		return lstMembres;
+	}
+
+	@Override
+	public Genre consulterGenreParId(long id) {
+		return null;
 	}
 
 	/**

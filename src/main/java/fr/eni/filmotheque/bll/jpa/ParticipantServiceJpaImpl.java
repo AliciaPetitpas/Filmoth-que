@@ -4,11 +4,13 @@ import fr.eni.filmotheque.bll.IParticipantService;
 import fr.eni.filmotheque.bo.Participant;
 import fr.eni.filmotheque.dal.ParticipantJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Profile("prod")
 @Service
 public class ParticipantServiceJpaImpl implements IParticipantService {
     @Autowired

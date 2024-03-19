@@ -4,10 +4,12 @@ import fr.eni.filmotheque.bll.IAvisService;
 import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.dal.AvisJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Profile("prod")
 @Service
 public class AvisServiceJpaImpl implements IAvisService {
 

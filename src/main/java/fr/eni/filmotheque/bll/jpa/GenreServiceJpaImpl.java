@@ -4,12 +4,13 @@ import fr.eni.filmotheque.bll.IGenreService;
 import fr.eni.filmotheque.bo.*;
 import fr.eni.filmotheque.dal.GenreJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-//@Profile("prod")
+@Profile("prod")
 @Service
 public class GenreServiceJpaImpl implements IGenreService {
 
