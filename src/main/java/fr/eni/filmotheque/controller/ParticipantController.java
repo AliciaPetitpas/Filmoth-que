@@ -49,6 +49,7 @@ public class ParticipantController {
     @GetMapping("/participantUpdate/{id}")
     public String getUpdateParticipant(@PathVariable("id") long id, Model model) {
         model.addAttribute("participant", participantService.consulterParticipantParId(id));
+        model.addAttribute("id", id);
 
         return "participantUpdate";
     }
@@ -57,6 +58,7 @@ public class ParticipantController {
     public String postUpdateParticipant(@PathVariable("id") long id, @Valid Participant participant, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("participant", participantService.consulterParticipantParId(id));
+            model.addAttribute("id", id);
             return "participantUpdate";
         }
 

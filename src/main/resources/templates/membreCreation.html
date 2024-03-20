@@ -9,7 +9,41 @@
     <h2>Ajouter un membre</h2>
     <a href="/membres" class="link-button">Liste des membres</a>
 
-    <form th:replace="~{fragments/formMembreCRU :: form(${membre}, 'create')}"></form>
+    <form method="post"
+          th:object="${membre}"
+          th:action="@{/membreCreation}">
+        <div class="label-input">
+            <label>Nom</label>
+            <input type="text" th:field="*{Nom}" th:class="*{Nom != null ? 'hidden' : 'flex'}" />
+            <div th:if="*{Nom != null}">
+                <p th:text="*{Nom}"></p>
+            </div>
+        </div>
+        <div class="label-input">
+            <label>Prénom</label>
+            <input type="text" th:field="*{Prenom}" th:class="*{Prenom != null ? 'hidden' : 'flex'}" />
+            <div th:if="*{Prenom != null}">
+                <p th:text="*{Prenom}"></p>
+            </div>
+        </div>
+        <div class="label-input">
+            <label>Pseudo</label>
+            <input type="text" th:field="*{Pseudo}" />
+        </div>
+        <span class="error" th:errors="*{Pseudo}"></span>
+        <div class="label-input">
+            <label>Mot de passe</label>
+            <input type="password" th:field="*{motDePasse}" />
+        </div>
+        <span class="error" th:errors="*{motDePasse}"></span>
+        <div class="label-input">
+            <label>Admin</label>
+            <input type="checkbox" th:field="*{admin}" />
+        </div>
+        <button type="submit">
+            Valider
+        </button>
+    </form>
 </main>
 
 </body>

@@ -56,6 +56,7 @@ public class MembreController {
     @GetMapping("/membreUpdate/{id}")
     public String getUpdateGenre(@PathVariable("id") long id, Model model) {
         model.addAttribute("membre", membreService.consulterMembreParId(id));
+        model.addAttribute("id", id);
 
         return "membreUpdate";
     }
@@ -63,8 +64,8 @@ public class MembreController {
     @PostMapping("/membreUpdate/{id}")
     public String postUpdateGenre(@PathVariable("id") long id, @Valid Membre membre, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(membre);
             model.addAttribute("membre", membreService.consulterMembreParId(id));
+            model.addAttribute("id", id);
             return "membreUpdate";
         }
 

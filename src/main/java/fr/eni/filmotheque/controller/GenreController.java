@@ -53,6 +53,7 @@ public class GenreController {
     @GetMapping("/genreUpdate/{id}")
     public String getUpdateGenre(@PathVariable("id") long id, Model model) {
         model.addAttribute("genre", genreService.consulterGenreParId(id));
+        model.addAttribute("id", id);
 
         return "genreUpdate";
     }
@@ -61,6 +62,7 @@ public class GenreController {
     public String postUpdateGenre(@PathVariable("id") long id, @Valid Genre genre, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("genre", genreService.consulterGenreParId(id));
+            model.addAttribute("id", id);
             return "genreUpdate";
         }
 

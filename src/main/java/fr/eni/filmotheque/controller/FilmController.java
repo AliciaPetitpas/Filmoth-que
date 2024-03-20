@@ -89,7 +89,7 @@ public class FilmController {
         model.addAttribute("listeGenres", genreService.consulterGenres());
         model.addAttribute("listeParticipants", participantService.consulterParticipants());
         model.addAttribute("film", filmService.consulterFilmParId(id));
-        model.addAttribute("isReadOnly", false);
+        model.addAttribute("id", id);
 
         return "filmUpdate";
     }
@@ -100,6 +100,7 @@ public class FilmController {
             model.addAttribute("listeGenres", genreService.consulterGenres());
             model.addAttribute("listeParticipants", participantService.consulterParticipants());
             model.addAttribute("film", filmService.consulterFilmParId(id));
+            model.addAttribute("id", id);
             return "filmUpdate";
         }
 

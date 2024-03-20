@@ -9,7 +9,18 @@
   <h2>Ajouter un genre</h2>
   <a href="/genres" class="link-button">Liste des genres</a>
 
-  <form th:replace="~{fragments/formGenreCRU :: form(${genre}, 'create')}"></form>
+  <form method="post"
+        th:object="${genre}"
+        th:action="@{/genreCreation}">
+    <div class="label-input">
+      <label>Titre</label>
+      <input type="text" th:field="*{Titre}" />
+    </div>
+    <span class="error" th:errors="*{Titre}"></span>
+    <button type="submit">
+      Valider
+    </button>
+  </form>
 </main>
 
 </body>

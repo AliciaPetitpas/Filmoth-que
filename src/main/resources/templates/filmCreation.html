@@ -9,7 +9,48 @@
     <h2>Ajouter un film</h2>
     <a href="/films" class="link-button">Liste des films</a>
 
-    <form th:replace="~{fragments/formCreateUpdate :: form(${film}, 'create', ${listeGenres}, ${listeParticipants})}"></form>
+    <form method="post"
+          th:object="${film}"
+          th:action="@{/filmCreation}">
+        <div class="label-input">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" th:field="*{Titre}">
+        </div>
+        <span class="error" th:errors="*{Titre}"></span>
+        <div class="label-input">
+            <label for="genre">Genre</label>
+            <select id="genre" th:field="*{genre}">
+                <option th:each="genre : ${listeGenres}" th:text="${genre.Titre}" th:value="${genre.Id}"></option>
+            </select>
+        </div>
+        <div class="label-input">
+            <label for="annee">Année</label>
+            <input type="text" id="annee" th:field="*{Annee}">
+        </div>
+        <div class="label-input">
+            <label for="realisateur">Réalisateur</label>
+            <select id="realisateur" th:field="*{realisateur}">
+                <option th:each="realisateur : ${listeParticipants}" th:text="|${realisateur.Prenom} ${realisateur.Nom}|" th:value="${realisateur.Id}"></option>
+            </select>
+        </div>
+        <div class="label-input">
+            <label for="duree">Durée</label>
+            <input type="text" id="duree" th:field="*{Duree}">
+        </div>
+        <div class="label-input">
+            <label for="acteurs">Acteur(s)</label>
+            <ul id="acteurs">
+                <li th:each="acteur : ${listeParticipants}" class="liste-acteurs">
+                    <input type="checkbox" th:text="|${acteur.Prenom} ${acteur.Nom}|" th:value="${acteur.Id}" th:field="*{listeParticipant}" />
+                </li>
+            </ul>
+        </div>
+        <div class="label-input">
+            <label for="synopsis">Synopsis</label>
+            <textarea id="synopsis" th:field="*{Synopsis}" rows="5" cols="30"></textarea>
+        </div>
+        <button type="submit">Valider</button>
+    </form>
 </main>
 
 </body>

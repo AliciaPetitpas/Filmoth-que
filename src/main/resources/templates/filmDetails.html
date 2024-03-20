@@ -7,9 +7,7 @@
         <h2>Détails du film</h2>
         <a href="/films" class="link-button">Liste des films</a>
 
-        <p th:text="${film}"></p>
-
-<!--        <form th:replace="~{fragments/form :: form(${film}, ${isReadOnly})}"></form>-->
+        <form th:replace="~{fragments/form :: form(${film}, ${isReadOnly})}"></form>
     </main>
 </body>
 </html>
