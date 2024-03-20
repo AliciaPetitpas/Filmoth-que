@@ -10,8 +10,6 @@
     <a href="/films" class="link-button">Liste des films</a>
 
     <form id="form-avis" th:action="|/avisCreation/${film.Id}|" method="post" th:object="${avis}">
-        <input type="text" class="hidden" th:value="${film.Id}" />
-
         <div class="label-input">
             <label>Note</label>
             <div class="stars-note">

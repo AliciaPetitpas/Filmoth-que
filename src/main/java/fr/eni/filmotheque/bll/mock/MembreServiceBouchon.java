@@ -76,7 +76,7 @@ public class MembreServiceBouchon implements IMembreService {
         Membre membreAModifier = consulterMembreParId(membre.getId());
         membreAModifier.setAdmin(membre.isAdmin());
         membreAModifier.setPseudo(membre.getPseudo());
-        membreAModifier.setMotDePasse(membre.getMotDePasse());
+        membreAModifier.setMotDePasse(passwordEncoder.encode(membre.getMotDePasse()));
     }
 
     @Override

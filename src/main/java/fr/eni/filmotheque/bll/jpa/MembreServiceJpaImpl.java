@@ -67,7 +67,7 @@ public class MembreServiceJpaImpl implements IMembreService {
         Membre membreAmodifier = consulterMembreParId(membre.getId());
         membreAmodifier.setAdmin(membre.isAdmin());
         membreAmodifier.setPseudo(membre.getPseudo());
-        membreAmodifier.setMotDePasse(membre.getMotDePasse());
+        membreAmodifier.setMotDePasse(passwordEncoder.encode(membre.getMotDePasse()));
         membreJpaRepository.save(membreAmodifier);
     }
 }

@@ -2,13 +2,16 @@ package fr.eni.filmotheque.controller;
 
 import fr.eni.filmotheque.bll.IFilmService;
 import fr.eni.filmotheque.bll.IGenreService;
+import fr.eni.filmotheque.bll.IMembreService;
 import fr.eni.filmotheque.bll.IParticipantService;
 import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.bo.Film;
 import fr.eni.filmotheque.bo.Genre;
 import fr.eni.filmotheque.bo.Participant;
+import fr.eni.filmotheque.security.Utilisateur;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +32,8 @@ public class FilmController {
     private IParticipantService participantService;
     @Autowired
     private IGenreService genreService;
+    @Autowired
+    private IMembreService membreService;
 
     @ModelAttribute("listeGenres")
     public  List<Genre> listeGenres(){
@@ -107,5 +112,30 @@ public class FilmController {
         filmService.modifierFilm(film);
 
         return "redirect:/films";
+    }
+
+    @GetMapping("/avisCreation/{id}")
+    public String getCreationAvis(@PathVariable("id") long id, Model model) {
+        model.addAttribute("film", filmService.consulterFilmParId(id));
+        model.addAttribute("avis", new Avis());
+
+        return "avisCreation";
+    }
+
+    @PostMapping("/avisCreation/{id}")
+    public String postCreationAvis(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model,@AuthenticationPrincipal Utilisateur utilisateurConnecte) {
+        model.addAttribute("avis", new Avis());
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("films", filmService.consulterFilms());
+
+            return "films";
+        }
+
+        avis.setMembre(utilisateurConnecte.getMembre());
+
+        filmService.publierAvis(avis, id);
+
+        return "redirect:/films/" + id;
     }
 }
