@@ -104,7 +104,7 @@ public class FilmController {
             return "filmUpdate";
         }
 
-        // TODO update film
+        filmService.modifierFilm(film);
 
         return "redirect:/films";
     }

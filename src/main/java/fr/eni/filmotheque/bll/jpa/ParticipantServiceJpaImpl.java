@@ -3,6 +3,7 @@ package fr.eni.filmotheque.bll.jpa;
 import fr.eni.filmotheque.bll.IParticipantService;
 import fr.eni.filmotheque.bo.Participant;
 import fr.eni.filmotheque.dal.ParticipantJpaRepository;
+import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,13 @@ public class ParticipantServiceJpaImpl implements IParticipantService {
     @Override
     public void supprimerParticipantParId(long id) {
         participantJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public void modifierParticipant(Participant participant) {
+        Participant participantAModifier = consulterParticipantParId(participant.getId());
+        participantAModifier.setNom(participant.getNom());
+        participantAModifier.setPrenom(participant.getPrenom());
+        participantJpaRepository.save(participantAModifier);
     }
 }

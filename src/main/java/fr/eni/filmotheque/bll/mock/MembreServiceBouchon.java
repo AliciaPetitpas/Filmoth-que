@@ -72,6 +72,14 @@ public class MembreServiceBouchon implements IMembreService {
     }
 
     @Override
+    public void modifierMembre(Membre membre) {
+        Membre membreAModifier = consulterMembreParId(membre.getId());
+        membreAModifier.setAdmin(membre.isAdmin());
+        membreAModifier.setPseudo(membre.getPseudo());
+        membreAModifier.setMotDePasse(membre.getMotDePasse());
+    }
+
+    @Override
     public void enregistrerMembre(Membre membre) {
         // on rajoute l'id au membre (tout en l'incrémentant)
         membre.setId(idCourant++);

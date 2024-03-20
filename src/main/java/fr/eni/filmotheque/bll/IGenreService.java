@@ -14,5 +14,5 @@ public interface IGenreService {
 
     void supprimerGenreParId(long id);
 
-    void updateGenre(Genre genre);
+    void modifierGenre(Genre genre);
 }

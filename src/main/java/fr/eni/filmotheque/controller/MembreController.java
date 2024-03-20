@@ -69,7 +69,7 @@ public class MembreController {
             return "membreUpdate";
         }
 
-        // TODO Update membre
+        membreService.modifierMembre(membre);
 
         return "redirect:/membres";
     }

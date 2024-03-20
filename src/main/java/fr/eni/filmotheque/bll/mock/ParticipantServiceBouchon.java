@@ -57,6 +57,14 @@ public class ParticipantServiceBouchon implements IParticipantService {
     }
 
     @Override
+    public void modifierParticipant(Participant participant) {
+        Participant participantAModifier = consulterParticipantParId(participant.getId());
+
+        participantAModifier.setPrenom(participant.getPrenom());
+        participantAModifier.setNom(participant.getNom());
+    }
+
+    @Override
     public void enregistrerParticipant(Participant participant) {
         // on rajoute l'id au participant (tout en l'incrémentant)
         participant.setId(idCourant++);

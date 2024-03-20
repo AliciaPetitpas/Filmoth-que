@@ -62,7 +62,7 @@ public class ParticipantController {
             return "participantUpdate";
         }
 
-        // TODO update Participant
+        participantService.modifierParticipant(participant);
 
         return "redirect:/participants";
     }

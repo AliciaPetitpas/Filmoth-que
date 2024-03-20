@@ -51,8 +51,9 @@ public class GenreServiceBouchon implements IGenreService {
     }
 
     @Override
-    public void updateGenre(Genre genre) {
-        // TODO
+    public void modifierGenre(Genre genre) {
+        Genre genreAModifier = consulterGenreParId(genre.getId());
+        genreAModifier.setTitre(genre.getTitre());
     }
 
     @Override

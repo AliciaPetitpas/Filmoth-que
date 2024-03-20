@@ -13,4 +13,6 @@ public interface IParticipantService {
     void enregistrerParticipant(Participant participant);
 
     void supprimerParticipantParId(long id);
+
+    void modifierParticipant(Participant participant);
 }

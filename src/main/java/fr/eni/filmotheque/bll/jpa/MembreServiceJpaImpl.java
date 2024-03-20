@@ -61,4 +61,13 @@ public class MembreServiceJpaImpl implements IMembreService {
     public void supprimerMembreParId(long id) {
         membreJpaRepository.deleteById(id);
     }
+
+    @Override
+    public void modifierMembre(Membre membre) {
+        Membre membreAmodifier = consulterMembreParId(membre.getId());
+        membreAmodifier.setAdmin(membre.isAdmin());
+        membreAmodifier.setPseudo(membre.getPseudo());
+        membreAmodifier.setMotDePasse(membre.getMotDePasse());
+        membreJpaRepository.save(membreAmodifier);
+    }
 }

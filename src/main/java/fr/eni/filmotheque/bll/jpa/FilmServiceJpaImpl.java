@@ -41,6 +41,19 @@ public class FilmServiceJpaImpl implements IFilmService {
     }
 
     @Override
+    public void modifierFilm(Film film) {
+        Film filmAModifier = consulterFilmParId(film.Id);
+        filmAModifier.setTitre(film.getTitre());
+        filmAModifier.setGenre(film.getGenre());
+        filmAModifier.setAnnee(film.getAnnee());
+        filmAModifier.setRealisateur(film.getRealisateur());
+        filmAModifier.setDuree(film.getDuree());
+        filmAModifier.setListeParticipant(film.getListeParticipant());
+        filmAModifier.setSynopsis(film.getSynopsis());
+        filmJpaRepository.save(filmAModifier);
+    }
+
+    @Override
     public void publierAvis(Avis avis, long id) {
         avis.setFilm(filmJpaRepository.findById(id).orElse(null));
         avisJpaRepository.save(avis);

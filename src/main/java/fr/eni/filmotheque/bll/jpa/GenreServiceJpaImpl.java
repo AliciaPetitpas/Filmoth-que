@@ -39,12 +39,9 @@ public class GenreServiceJpaImpl implements IGenreService {
     }
 
     @Override
-    public void updateGenre(Genre genre) {
-        List<Genre> listeGenres = genreJpaRepository.findAll();
-        for (Genre genreAUpdate : listeGenres) {
-            if (Objects.equals(genreAUpdate.getId(), genre.getId())) {
-                genreAUpdate.setTitre(genre.Titre);
-            }
-        }
+    public void modifierGenre(Genre genre) {
+        Genre genreAModifier = consulterGenreParId(genre.getId());
+        genreAModifier.setTitre(genre.getTitre());
+        genreJpaRepository.save(genreAModifier);
     }
 }

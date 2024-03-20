@@ -15,4 +15,6 @@ public interface IMembreService {
     void enregistrerMembre(Membre membre) throws Exception;
 
     void supprimerMembreParId(long id);
+
+    void modifierMembre(Membre membre);
 }

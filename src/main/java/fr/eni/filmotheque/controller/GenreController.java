@@ -66,7 +66,7 @@ public class GenreController {
             return "genreUpdate";
         }
 
-        // TODO update genre
+        genreService.modifierGenre(genre);
 
         return "redirect:/genres";
     }

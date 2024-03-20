@@ -14,5 +14,7 @@ public interface IFilmService {
 
     void supprimerFilm(long id);
 
+    void modifierFilm(Film film);
+
     void publierAvis(Avis avis, long id);
 }
