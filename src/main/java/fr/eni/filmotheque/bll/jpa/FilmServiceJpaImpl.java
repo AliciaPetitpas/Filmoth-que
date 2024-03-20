@@ -58,4 +58,11 @@ public class FilmServiceJpaImpl implements IFilmService {
         avis.setFilm(filmJpaRepository.findById(id).orElse(null));
         avisJpaRepository.save(avis);
     }
+
+    public void publierAvisUnidirectionnel(Avis avis, long id) {
+        Film film = consulterFilmParId(id);
+        film.getAvis().add(avis);
+
+        filmJpaRepository.save(film);
+    }
 }
