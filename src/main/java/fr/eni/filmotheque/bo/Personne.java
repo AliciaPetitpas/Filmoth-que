@@ -1,21 +1,19 @@
 package fr.eni.filmotheque.bo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@MappedSuperclass // Ne crée pas de table pour PERSONNE
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
     @NotBlank(message = "Le nom ne peut pas être vide")
     public String Nom;
@@ -27,3 +25,4 @@ public abstract class Personne {
         this.Prenom = prenom;
     }
 }
+

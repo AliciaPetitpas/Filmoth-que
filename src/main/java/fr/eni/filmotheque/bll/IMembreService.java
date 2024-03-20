@@ -8,5 +8,11 @@ import java.util.Optional;
 public interface IMembreService {
     List<Membre> consulterMembres();
 
-    Optional<Membre> consulterMembreParId(long id);
+    Membre consulterMembreParId(long id);
+
+    Membre consulterMembreParPseudo(String pseudo);
+
+    void enregistrerMembre(Membre membre) throws Exception;
+
+    void supprimerMembreParId(long id);
 }

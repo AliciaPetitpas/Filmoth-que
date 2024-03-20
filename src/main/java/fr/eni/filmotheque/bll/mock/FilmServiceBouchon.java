@@ -161,7 +161,7 @@ public class FilmServiceBouchon implements IFilmServiceMock {
 		membre2.setAdmin(true);
 		lstMembres.add(membre1);
 		lstMembres.add(membre2);
-		Avis avis1 = new Avis(1L, 4, "On rit du début à la fin", membre1);
+		Avis avis1 = new Avis(1L, 4, "On rit du début à la fin", membre1, null);
 		lstAvis.add(avis1);
 		bienvenueChezLesChtis.getAvis().add(avis1);
 	}

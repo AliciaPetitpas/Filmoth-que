@@ -1,6 +1,7 @@
 <form th:fragment="form(participant, type)"
       method="post"
-      th:object="${participant}">
+      th:object="${participant}"
+      th:action="@{/participantCreation}">
     <div class="label-input">
         <label>Nom</label>
         <input type="text" th:field="*{Nom}" />

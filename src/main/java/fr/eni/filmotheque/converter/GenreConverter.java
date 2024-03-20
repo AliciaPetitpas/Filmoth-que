@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class GenreConverter implements Converter<String, Optional<Genre>> {
+public class GenreConverter implements Converter<String, Genre> {
     @Autowired
     private GenreServiceJpaImpl genreServiceJpa;
 
     @Override
-    public Optional<Genre> convert(String participantTexte) {
-        Optional<Genre> genre = Optional.of(new Genre());
+    public Genre convert(String participantTexte) {
+        Genre genre = new Genre();
 
         try {
             genre = genreServiceJpa.consulterGenreParId(Long.parseLong(participantTexte));

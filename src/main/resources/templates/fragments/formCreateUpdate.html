@@ -1,6 +1,7 @@
 <form th:fragment="form(film, type, listeGenres, listeParticipants)"
       method="post"
-      th:object="${film}">
+      th:object="${film}"
+      th:action="@{type == 'creation' ? @{/filmCreation} : @{|/filmUpdate/${film.Id}|} }">
     <div class="label-input">
         <label for="titre">Titre</label>
         <input type="text" id="titre" th:field="*{Titre}">

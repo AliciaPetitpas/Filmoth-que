@@ -8,5 +8,9 @@ import java.util.Optional;
 public interface IParticipantService {
     List<Participant> consulterParticipants();
 
-    Optional<Participant> consulterParticipantParId(long id);
+    Participant consulterParticipantParId(long id);
+
+    void enregistrerParticipant(Participant participant);
+
+    void supprimerParticipantParId(long id);
 }

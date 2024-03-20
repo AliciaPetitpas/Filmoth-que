@@ -1,8 +1,7 @@
 package fr.eni.filmotheque.controller;
 
-import fr.eni.filmotheque.bll.IFilmService;
+import fr.eni.filmotheque.bll.IParticipantService;
 import fr.eni.filmotheque.bo.Participant;
-import jakarta.servlet.http.Part;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,32 +17,14 @@ import java.util.List;
 @Controller
 public class ParticipantController {
     @Autowired
-    private IFilmService filmService;
-
-    List<Participant> listeParticipants = new ArrayList<>();
+    private IParticipantService participantService;
 
     @GetMapping("/participants")
     public String getParticipants(Model model) {
         model.addAttribute("participant", new Participant());
-        listeParticipants = filmService.consulterParticipants();
-        model.addAttribute("participants", listeParticipants);
+        model.addAttribute("participants", participantService.consulterParticipants());
 
         return "participants";
-    }
-
-    @PostMapping("/participants")
-    public String postParticipants(@Valid Participant participant, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            listeParticipants = filmService.consulterParticipants();
-            model.addAttribute("participants", listeParticipants);
-            return "participants";
-        }
-
-        participant.setId((long) (listeParticipants.size() + 1));
-
-        listeParticipants.add(participant);
-
-        return "redirect:/participants";
     }
 
     @GetMapping("/participantCreation")
@@ -59,17 +40,15 @@ public class ParticipantController {
             model.addAttribute("participant", new Participant());
             return "participantCreation";
         }
-        listeParticipants = filmService.consulterParticipants();
 
-        participant.setId((long) (listeParticipants.size() + 1));
-        listeParticipants.add(participant);
+        participantService.enregistrerParticipant(participant);
 
         return "redirect:/participants";
     }
 
     @GetMapping("/participantUpdate/{id}")
     public String getUpdateParticipant(@PathVariable("id") long id, Model model) {
-        model.addAttribute("participant", filmService.consulterParticipantParId(id));
+        model.addAttribute("participant", participantService.consulterParticipantParId(id));
 
         return "participantUpdate";
     }
@@ -77,15 +56,18 @@ public class ParticipantController {
     @PostMapping("/participantUpdate/{id}")
     public String postUpdateParticipant(@PathVariable("id") long id, @Valid Participant participant, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("participant", filmService.consulterParticipantParId(id));
+            model.addAttribute("participant", participantService.consulterParticipantParId(id));
             return "participantUpdate";
         }
 
-        Participant participantAUpdate = filmService.consulterParticipantParId(id);
-        participantAUpdate.setNom(participant.Nom);
-        participantAUpdate.setPrenom(participant.Prenom);
+        // TODO update Participant
 
-        listeParticipants = filmService.consulterParticipants();
+        return "redirect:/participants";
+    }
+
+    @PostMapping("/participantDelete/{id}")
+    public String postDeleteParticipant(@PathVariable("id") long id) {
+        participantService.supprimerParticipantParId(id);
 
         return "redirect:/participants";
     }

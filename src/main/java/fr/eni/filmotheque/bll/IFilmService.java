@@ -8,7 +8,11 @@ import java.util.Optional;
 public interface IFilmService {
     List<Film> consulterFilms();
 
-    Optional<Film> consulterFilmParId(long id);
+    Film consulterFilmParId(long id);
 
     void creerFilm(Film film);
+
+    void supprimerFilm(long id);
+
+    void publierAvis(Avis avis, long id);
 }

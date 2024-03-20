@@ -20,6 +20,13 @@ public class Membre extends Personne {
         this.motDePasse = mdp;
     }
 
+    public Membre(Long Id, String Nom, String Prenom, String pseudo, String mdp, boolean isAdmin) {
+        super(Id, Nom, Prenom);
+        this.Pseudo = pseudo;
+        this.motDePasse = mdp;
+        this.isAdmin = isAdmin;
+    }
+
     public Membre() {
     }
 }

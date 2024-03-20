@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
-@Profile("prod")
 @Service
+@Profile("prod")
 public class GenreServiceJpaImpl implements IGenreService {
 
     @Autowired
@@ -23,17 +23,28 @@ public class GenreServiceJpaImpl implements IGenreService {
     }
 
     @Override
-    public Optional<Genre> consulterGenreParId(long id) {
-        return genreJpaRepository.findById(id);
+    public Genre consulterGenreParId(long id) {
+        return genreJpaRepository.findById(id).orElse(null);
     }
 
+
     @Override
-    public Genre creerGenre(Genre genre) {
+    public Genre enregistrerGenre(Genre genre) {
         return genreJpaRepository.save(genre);
     }
 
     @Override
-    public void deleteGenre(Long id) {
+    public void supprimerGenreParId(long id) {
         genreJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateGenre(Genre genre) {
+        List<Genre> listeGenres = genreJpaRepository.findAll();
+        for (Genre genreAUpdate : listeGenres) {
+            if (Objects.equals(genreAUpdate.getId(), genre.getId())) {
+                genreAUpdate.setTitre(genre.Titre);
+            }
+        }
     }
 }

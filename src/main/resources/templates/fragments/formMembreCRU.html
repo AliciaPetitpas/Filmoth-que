@@ -1,6 +1,7 @@
 <form th:fragment="form(membre, type)"
       method="post"
-      th:object="${membre}">
+      th:object="${membre}"
+      th:action="@{/membreCreation}">
     <div class="label-input">
         <label>Nom</label>
         <input type="text" th:field="*{Nom}" th:class="*{Nom != null ? 'hidden' : 'flex'}" />
@@ -20,6 +21,11 @@
         <input type="text" th:field="*{Pseudo}" />
     </div>
     <span class="error" th:errors="*{Pseudo}"></span>
+    <div class="label-input">
+        <label>Mot de passe</label>
+        <input type="password" th:field="*{motDePasse}" />
+    </div>
+    <span class="error" th:errors="*{motDePasse}"></span>
     <div class="label-input">
         <label>Admin</label>
         <input type="checkbox" th:field="*{admin}" />

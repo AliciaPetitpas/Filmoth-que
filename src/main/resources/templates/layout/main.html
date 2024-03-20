@@ -9,6 +9,8 @@
 <body id="body" class="bg-default">
     <header th:replace="~{fragments/header}"/>
 
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+
     <main class="flex-center" layout:fragment="content"/>
 
     <footer th:replace="~{fragments/footer}"/>

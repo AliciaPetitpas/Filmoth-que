@@ -24,13 +24,11 @@ public class Avis {
     @ManyToOne
     public Membre Membre;
 
-    public Avis(Integer note, String commentaire, Membre membre) {
-        this.Note = note;
-        this.Commentaire = commentaire;
-        this.Membre = membre;
-    }
+    @ManyToOne
+    Film film;
 
-    public void add(Avis avis) {
-        Avis newAvis = new Avis(avis.Id, avis.Note, avis.Commentaire, avis.Membre);
+    public void setFilm(Film film) {
+        this.film = film;
+        film.getAvis().add(this);
     }
 }

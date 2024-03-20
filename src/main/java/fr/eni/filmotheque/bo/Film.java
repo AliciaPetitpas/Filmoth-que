@@ -23,11 +23,15 @@ public class Film {
     @Setter
     @ManyToOne
     public Genre genre;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "film_id")
+    public List<Avis> listeAvis = new ArrayList<>();
+
     @Setter
     @ManyToOne
     public Participant realisateur;
-    @OneToMany
-    public List<Avis> listeAvis = new ArrayList<>();
+
     @ManyToMany
     public List<Participant> listeParticipant = new ArrayList<>();
 

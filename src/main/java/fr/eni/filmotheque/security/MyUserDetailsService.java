@@ -1,5 +1,6 @@
 package fr.eni.filmotheque.security;
 
+import fr.eni.filmotheque.bll.IMembreService;
 import fr.eni.filmotheque.bo.Membre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,28 +14,20 @@ import java.util.List;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
-    List<Membre> membres = new ArrayList<>();
+    private IMembreService membreService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    public MyUserDetailsService(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-
-        Membre membre1 = new Membre(1L, "Baille", "Anne-Lise", "abaille@campus-eni.fr", passwordEncoder.encode("membre1"));
-        Membre membre2 = new Membre(2L, "Dupond", "Jean", "jean-dupond@campus-eni.fr", passwordEncoder.encode("membre2"));
-        membre2.setAdmin(true);
-        membres.add(membre1);
-        membres.add(membre2);
+    public MyUserDetailsService(IMembreService membreService) {
+        this.membreService = membreService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        for (Membre membre : membres) {
-            if (membre.getPseudo().equals(username)) {
-                return new Utilisateur(membre);
-            }
+        Membre membre = membreService.consulterMembreParPseudo(username);
+
+        if (membre != null) {
+            return new Utilisateur(membre);
         }
+
         throw new UsernameNotFoundException(username);
     }
 }
