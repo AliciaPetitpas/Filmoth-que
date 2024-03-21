@@ -26,7 +26,7 @@ public interface FilmJpaRepository extends JpaRepository<Film, Long> {
                 "or p.Prenom like %:#{#params.search}% " +
                 "or p.Nom like %:#{#params.search}%) " +
                 // Filtre le genre
-            "and (:#{#params.genre} is NULL or :#{#params.genre} = '' or :#{#params.genre} = 0 " +
+            "and (:#{#params.genre} is NULL or :#{#params.genre} = 0 " +
                 "or f.genre.Id = :#{#params.genre}) " +
                 // Filtre sur l'année de réalisation
             "and f.Annee <= :#{#params.anneeMax} and f.Annee >= :#{#params.anneeMin} " +
