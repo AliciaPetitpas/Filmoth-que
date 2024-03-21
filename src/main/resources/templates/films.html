@@ -8,25 +8,30 @@
         <a sec:authorize="hasRole('admin')" href="/filmCreation" class="link-button">Ajouter un film</a>
 
         <form id="search-form" method="get" th:object="${searchParams}">
-            <p>Recherche</p>
+            <div class="label-search">
+                <p>Recherche</p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-search">
+                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                </svg>
+            </div>
             <div class="label-input">
-                    <input type="text" name="search" th:fiels="*{search}" placeholder="Titre, réalisateur ou acteur" onfocusout="document.getElementById('search-form').submit()" />
-                    <select th:field="*{genre}" onchange="document.getElementById('search-form').submit()">
-                        <option value="0">-- Genres --</option>
-                        <option th:each="genre : ${listeGenres}" th:value="${genre.getId()}" th:text="${genre.Titre}"></option>
-                    </select>
-                </div>
-                <div class="label-input">
-                    <label>Année de sortie</label>
-                    <input type="number" min="1900" max="2024" step="1" th:field="*{anneeMin}" onchange="document.getElementById('search-form').submit()" />
-                    <input type="number" min="1900" max="2024" step="1" th:field="*{anneeMax}" onchange="document.getElementById('search-form').submit()" />
-                </div>
-                <div class="label-input">
-                    <label>Durée du film</label>
-                    <input type="number" min="1" max="300" step="1" th:field="*{dureeMin}" onchange="document.getElementById('search-form').submit()" />
-                    <input type="number" min="1" max="300" step="1" th:field="*{dureeMax}" onchange="document.getElementById('search-form').submit()" />
-                </div>
-            </form>
+                <input type="text" name="search" th:fiels="*{search}" placeholder="Titre, réalisateur ou acteur" onfocusout="document.getElementById('search-form').submit()" />
+                <select th:field="*{genre}" onchange="document.getElementById('search-form').submit()">
+                    <option value="0">-- Genres --</option>
+                    <option th:each="genre : ${listeGenres}" th:value="${genre.getId()}" th:text="${genre.Titre}"></option>
+                </select>
+            </div>
+            <div class="label-input">
+                <label>Année de sortie</label>
+                <input type="number" min="1900" max="2024" step="1" th:field="*{anneeMin}" onchange="document.getElementById('search-form').submit()" />
+                <input type="number" min="1900" max="2024" step="1" th:field="*{anneeMax}" onchange="document.getElementById('search-form').submit()" />
+            </div>
+            <div class="label-input">
+                <label>Durée du film</label>
+                <input type="number" min="1" max="300" step="1" th:field="*{dureeMin}" onchange="document.getElementById('search-form').submit()" />
+                <input type="number" min="1" max="300" step="1" th:field="*{dureeMax}" onchange="document.getElementById('search-form').submit()" />
+            </div>
+        </form>
 
         <section th:if="${films.isEmpty()}">
             <p>Aucun film</p>

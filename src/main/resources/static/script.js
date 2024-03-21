@@ -14,7 +14,6 @@ function openMenu() {
     }
 }
 
-
 function backgroundColor() {
     let body = document.getElementById("body");
 
@@ -22,5 +21,32 @@ function backgroundColor() {
         body.classList.replace('bg-default', 'bg-pink');
     } else {
         body.classList.replace('bg-pink', 'bg-default');
+    }
+}
+
+function addNote(note) {
+    let stars = document.getElementById("stars-note").children;
+    let starNote = document.getElementById("star-" + note);
+
+    for (const star of stars) {
+        if (note === 1) {
+            if (starNote.firstElementChild.classList.contains("full-star")) {
+                starNote.firstElementChild.classList.remove("full-star");
+            } else {
+                starNote.firstElementChild.classList.add("full-star");
+            }
+        } else {
+            if (star !== starNote) {
+                if (star.firstElementChild.classList.contains("full-star")) {
+                    star.firstElementChild.classList.remove("full-star");
+                    starNote.firstElementChild.classList.remove("full-star");
+                } else {
+                    star.firstElementChild.classList.add("full-star");
+                    starNote.firstElementChild.classList.add("full-star");
+                }
+            } else {
+                return;
+            }
+        }
     }
 }

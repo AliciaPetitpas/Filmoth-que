@@ -301,9 +301,9 @@ textarea {
     gap: 2px;
 }
 
-.stars-note:hover svg {
+#star-1:hover, #star-2:hover, #star-3:hover, #star-4:hover, #star-5:hover  {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .empty-star {
@@ -384,6 +384,18 @@ button[type="submit"]:hover, button[type="button"]:hover {
 
 #search-form input[type="number"] {
     width: 50px;
+}
+
+.label-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.svg-search {
+    width: 1rem;
+    fill: var(--primary-color);
 }
 
 /*
