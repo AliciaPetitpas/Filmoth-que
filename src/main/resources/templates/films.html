@@ -10,7 +10,7 @@
         <form id="search-form" method="get" th:object="${searchParams}">
             <p>Recherche</p>
             <div class="label-input">
-                    <input type="text" name="search" th:fiels="*{search}" placeholder="Recherchez par titre ou réalisateur" onfocusout="document.getElementById('search-form').submit()" />
+                    <input type="text" name="search" th:fiels="*{search}" placeholder="Recherchez par titre, réalisateur ou acteur" onfocusout="document.getElementById('search-form').submit()" />
                     <select th:field="*{genre}" onchange="document.getElementById('search-form').submit()">
                         <option value="0">-- Genres --</option>
                         <option th:each="genre : ${listeGenres}" th:value="${genre.getId()}" th:text="${genre.Titre}"></option>

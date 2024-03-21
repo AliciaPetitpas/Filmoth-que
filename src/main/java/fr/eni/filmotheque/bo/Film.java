@@ -24,7 +24,7 @@ public class Film {
     @ManyToOne
     public Genre genre;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "film_id")
     public List<Avis> listeAvis = new ArrayList<>();
 
