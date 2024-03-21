@@ -8,6 +8,7 @@ import fr.eni.filmotheque.bo.Avis;
 import fr.eni.filmotheque.bo.Film;
 import fr.eni.filmotheque.bo.Genre;
 import fr.eni.filmotheque.bo.Participant;
+import fr.eni.filmotheque.dto.SearchParams;
 import fr.eni.filmotheque.security.Utilisateur;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +44,14 @@ public class FilmController {
     }
 
     @GetMapping("/films")
-    public String getFilms(Model model) {
-        model.addAttribute("films", filmService.consulterFilms());
+    public String getFilms(SearchParams searchParams, Model model) {
+        model.addAttribute("listeGenres", genreService.consulterGenres());
+
+        if (searchParams.getSearch() != null) {
+            model.addAttribute("films", filmService.recherche(searchParams));
+        } else {
+            model.addAttribute("films", filmService.consulterFilms());
+        }
 
         return "films";
     }

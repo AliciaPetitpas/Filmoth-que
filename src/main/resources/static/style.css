@@ -374,6 +374,18 @@ button[type="submit"]:hover, button[type="button"]:hover {
     transform: scale(1.1);
 }
 
+#search-form .label-input {
+    gap: 0.25rem;
+}
+
+#search-form label {
+    width: 120px;
+}
+
+#search-form input[type="number"] {
+    width: 50px;
+}
+
 /*
 .input-container {
     position:relative;

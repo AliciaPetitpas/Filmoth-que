@@ -15,7 +15,7 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long Id;
     @NotBlank(message = "Veuillez renseigner un titre au film")
-    public String Titre;
+    public String titre;
     public Integer Annee;
     public Integer Duree;
     public String Synopsis;
@@ -37,14 +37,14 @@ public class Film {
 
     public Film(Long id, String titre, Integer annee, Integer duree, String synopsis) {
         this.Id = id;
-        this.Titre = titre;
+        this.titre = titre;
         this.Annee = annee;
         this.Duree = duree;
         this.Synopsis = synopsis;
     }
 
     public Film(String titre, Integer annee, Integer duree, String synopsis) {
-        this.Titre = titre;
+        this.titre = titre;
         this.Annee = annee;
         this.Duree = duree;
         this.Synopsis = synopsis;
