@@ -30,8 +30,6 @@ public class FilmController {
     private IParticipantService participantService;
     @Autowired
     private IGenreService genreService;
-    @Autowired
-    private IMembreService membreService;
 
     @ModelAttribute("listeGenres")
     public  List<Genre> listeGenres(){
@@ -127,7 +125,7 @@ public class FilmController {
     }
 
     @PostMapping("/avisCreation/{id}")
-    public String postCreationAvis(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model,@AuthenticationPrincipal Utilisateur utilisateurConnecte) {
+    public String postCreationAvis(@PathVariable("id") long id, @Valid Avis avis, BindingResult bindingResult, Model model, @AuthenticationPrincipal Utilisateur utilisateurConnecte) {
         model.addAttribute("avis", new Avis());
 
         if (bindingResult.hasErrors()) {

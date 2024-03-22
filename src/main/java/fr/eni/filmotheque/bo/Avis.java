@@ -1,5 +1,6 @@
 package fr.eni.filmotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -25,6 +26,7 @@ public class Avis {
     public Membre Membre;
 
     @ManyToOne
+    @JsonIgnore
     Film film;
 
     public void setFilm(Film film) {

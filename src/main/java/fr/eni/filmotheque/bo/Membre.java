@@ -1,5 +1,6 @@
 package fr.eni.filmotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import lombok.Setter;
 public class Membre extends Personne {
     @NotBlank(message = "Le pseudo ne peut pas être vide")
     public String Pseudo;
+    @JsonIgnore
     private String motDePasse;
     public boolean isAdmin = false;
 
